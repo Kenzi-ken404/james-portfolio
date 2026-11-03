@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume | Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #05080f;
+            color: #f5f7ff;
+            min-height: 100vh;
+            padding: 30px 20px;
+            overflow-x: hidden;
+        }
+
+        /* Background grid */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-image:
+                linear-gradient(rgba(139,77,255,.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139,77,255,.07) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        /* Glow effects */
+        .glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: .2;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glow-one {
+            background: #8b4dff;
+            top: -100px;
+            left: -150px;
+        }
+
+        .glow-two {
+            background: #53d9ff;
+            bottom: -100px;
+            right: -150px;
+        }
+
+        /* Navigation */
+        .navbar {
+            max-width: 1100px;
+            margin: 0 auto 40px;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            background: rgba(16,17,28,.8);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px;
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #b05cff;
+        }
+
+        .status {
+            color: #a7afc5;
+            font-size: 13px;
+        }
+
+        .status span {
+            color: #53d9ff;
+        }
+
+        /* Main content */
+        .container {
+            max-width: 1050px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: #53d9ff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #8950ff, #b05cff, #53d9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .description {
+            max-width: 550px;
+            margin: 0 auto 30px;
+            color: #a7afc5;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* Resume image frame */
+        .resume-frame {
+            position: relative;
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 7px;
+            border-radius: 18px;
+            background: linear-gradient(
+                135deg,
+                #8b4dff,
+                #b05cff,
+                #53d9ff
+            );
+            box-shadow:
+                0 0 25px rgba(139,77,255,.2),
+                0 20px 60px rgba(0,0,0,.4);
+            transition: .3s ease;
+        }
+
+        .resume-frame:hover {
+            box-shadow:
+                0 0 35px rgba(139,77,255,.35),
+                0 20px 60px rgba(0,0,0,.5);
+            transform: translateY(-3px);
+        }
+
+        .resume-paper {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .resume-paper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Buttons */
+        .actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 30px 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 22px;
+            border: 1px solid transparent;
+            border-radius: 11px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .btn-primary {
+            color: white;
+            background: linear-gradient(110deg, #6235d9, #a449ef);
+            box-shadow: 0 8px 25px rgba(139,77,255,.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(139,77,255,.35);
+        }
+
+        .btn-outline {
+            color: #f5f7ff;
+            background: rgba(255,255,255,.03);
+            border-color: rgba(176,92,255,.45);
+        }
+
+        .btn-outline:hover {
+            color: #53d9ff;
+            border-color: #53d9ff;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            max-width: 1050px;
+            margin: 35px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            text-align: center;
+            color: #778198;
+            font-size: 12px;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            body {
+                padding: 18px 12px;
+            }
+
+            .navbar {
+                margin-bottom: 35px;
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .status {
+                font-size: 11px;
+                text-align: right;
+            }
+
+            .resume-frame {
+                padding: 4px;
+                border-radius: 12px;
+            }
+
+            .resume-paper {
+                border-radius: 8px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .actions {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+
+    <nav class="navbar">
+        <a href="#" class="logo">MY <span>CV.</span></a>
+        <div class="status">
+            <span>●</span> Resume Preview
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <p class="eyebrow">MY RESUME</p>
+
+        <h1>My <span>Resume</span></h1>
+
+        <p class="description">
+            Welcome to my resume. View my educational background,
+            skills, experience, and personal information below.
+        </p>
+
+        <div class="resume-frame">
+            <div class="resume-paper">
+                <img src="resume.png" alt="My complete resume">
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="index.html" class="btn btn-outline">
+                ← Back to Portfolio
+            </a>
+        </div>
+
+    </main>
+
+</body>
+</html>
