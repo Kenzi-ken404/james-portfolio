@@ -1,8 +1,4 @@
 
-/* =========================================
-   01. GLOBAL STYLES
-========================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -42,6 +38,7 @@ button {
     color: #ffffff;
 }
 
+
 /* =========================================
    02. BACKGROUND
 ========================================= */
@@ -50,15 +47,14 @@ button {
     position: fixed;
     inset: 0;
     z-index: -3;
-    pointer-events: none;
     opacity: 0.07;
+    pointer-events: none;
 
     background-image:
         linear-gradient(rgba(139, 77, 255, 0.12) 1px, transparent 1px),
         linear-gradient(90deg, rgba(139, 77, 255, 0.12) 1px, transparent 1px);
 
     background-size: 75px 75px;
-
     mask-image: linear-gradient(to bottom, black, transparent 90%);
 }
 
@@ -66,11 +62,11 @@ button {
     position: fixed;
     width: 400px;
     height: 400px;
+    z-index: -2;
     border-radius: 50%;
     filter: blur(140px);
     opacity: 0.10;
     pointer-events: none;
-    z-index: -2;
 }
 
 .glow-one {
@@ -84,6 +80,7 @@ button {
     right: -220px;
     background: #53d9ff;
 }
+
 
 /* =========================================
    03. NAVIGATION
@@ -105,7 +102,6 @@ button {
 
     background: rgba(5, 8, 15, 0.92);
     backdrop-filter: blur(18px);
-
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -164,6 +160,7 @@ button {
     width: 100%;
 }
 
+
 /* =========================================
    04. GENERAL SECTIONS
 ========================================= */
@@ -187,6 +184,7 @@ button {
     border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+
 /* =========================================
    05. HERO SECTION
 ========================================= */
@@ -199,18 +197,20 @@ button {
     padding: 110px 0 70px;
 
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: minmax(0, 1.15fr) minmax(420px, 0.85fr);
     align-items: center;
-    gap: 60px;
+    gap: 40px;
 }
 
 .hero-copy {
+    width: 100%;
     max-width: 650px;
 }
 
 .eyebrow {
     display: flex;
     align-items: center;
+    gap: 12px;
 
     color: #bda8ff;
     font-size: 11px;
@@ -221,7 +221,6 @@ button {
 .eyebrow span {
     width: 32px;
     height: 2px;
-    margin-right: 12px;
     background: #a66bff;
 }
 
@@ -250,12 +249,13 @@ button {
     font-family: "Poppins", sans-serif;
     font-size: clamp(20px, 2vw, 26px);
     font-weight: 600;
+    line-height: 1.4;
 }
 
 .hero h2 i {
+    margin: 0 5px;
     color: #a66bff;
     font-style: normal;
-    margin: 0 5px;
 }
 
 .hero-text {
@@ -275,8 +275,6 @@ button {
     margin-top: 32px;
 }
 
-/* Buttons */
-
 .btn {
     min-height: 50px;
     padding: 0 24px;
@@ -291,7 +289,6 @@ button {
 
     font-size: 12px;
     font-weight: 700;
-
     transition: all 0.3s ease;
 }
 
@@ -337,14 +334,15 @@ button {
     color: #a66bff;
 }
 
+
 /* =========================================
    06. HERO PROFILE
 ========================================= */
 
 .hero-image {
     position: relative;
-    width: 390px;
-    height: 390px;
+    width: 500px;
+    height: 500px;
     margin: auto;
 
     display: flex;
@@ -352,28 +350,20 @@ button {
     justify-content: center;
 }
 
-/* PROFILE FRAME */
-
 .profile-frame {
     position: relative;
     z-index: 2;
 
-    width: 255px;
-    height: 255px;
-    padding: 5px;
+    width: 360px;
+    height: 360px;
+    padding: 6px;
 
-    background: linear-gradient(
-        135deg,
-        #8b4dff,
-        #53d9ff,
-        #8b4dff
-    );
-
+    background: linear-gradient(135deg, #8b4dff, #53d9ff, #8b4dff);
     border-radius: 50%;
 
     box-shadow:
-        0 0 30px rgba(139, 77, 255, 0.25),
-        0 0 50px rgba(83, 217, 255, 0.08);
+        0 0 40px rgba(139, 77, 255, 0.35),
+        0 0 70px rgba(83, 217, 255, 0.15);
 }
 
 .profile-frame img {
@@ -386,41 +376,37 @@ button {
     border-radius: 50%;
 }
 
-
-/* SPINNING ORBIT */
-
 .profile-orbit {
     position: absolute;
     z-index: 1;
 
-    width: 315px;
-    height: 315px;
+    width: 425px;
+    height: 425px;
 
     border: 2px solid rgba(139, 77, 255, 0.12);
     border-top: 3px solid #8b4dff;
     border-right: 3px solid #53d9ff;
-
     border-radius: 50%;
 
     animation: orbit-spin 6s linear infinite;
-
     pointer-events: none;
 }
 
-/* GLOWING ORBIT POINT */
+.profile-orbit::before,
+.profile-orbit::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+}
 
 .profile-orbit::before {
-    content: "";
+    top: 45px;
+    left: 45px;
 
-    position: absolute;
-    top: 35px;
-    left: 35px;
-
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
 
     background: #53d9ff;
-    border-radius: 50%;
 
     box-shadow:
         0 0 10px #53d9ff,
@@ -428,32 +414,23 @@ button {
         0 0 30px rgba(83, 217, 255, 0.5);
 }
 
-/* SECOND ORBIT POINT */
-
 .profile-orbit::after {
-    content: "";
+    bottom: 45px;
+    right: 45px;
 
-    position: absolute;
-    bottom: 35px;
-    right: 35px;
-
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
 
     background: #8b4dff;
-    border-radius: 50%;
 
     box-shadow:
         0 0 10px #8b4dff,
         0 0 20px rgba(139, 77, 255, 0.6);
 }
 
-
-/* SPIN ANIMATION */
-
 @keyframes orbit-spin {
     from {
-        transform: rotate(50deg);
+        transform: rotate(0deg);
     }
 
     to {
@@ -471,6 +448,13 @@ button {
 #projects .section-heading,
 .contact-heading {
     margin-bottom: 42px;
+}
+
+.about-heading,
+#skills .section-heading,
+#projects .section-heading,
+.contact-heading {
+    /* Shared heading structure */
 }
 
 .about-heading > p,
@@ -516,48 +500,56 @@ button {
     line-height: 1.9;
 }
 
+
 /* =========================================
-   ABOUT SECTION - CODE EDITOR DESIGN
+   08. ABOUT SECTION
 ========================================= */
+
+.about-heading {
+    margin-bottom: 0;
+}
 
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
+    align-items: start;
     gap: 55px;
-    margin-top: 45px;
+    margin-top: 15px;
 }
 
-/* ABOUT TEXT */
-
 .about-text {
+    align-self: start;
     max-width: 450px;
+    margin-top: 0;
 }
 
 .about-text h3 {
+    margin-bottom: 15px;
+
     color: #f5f7ff;
     font-family: "Poppins", sans-serif;
     font-size: 25px;
     font-weight: 700;
-    margin-bottom: 15px;
 }
 
 .about-text p {
+    margin-bottom: 17px;
+
     color: #aab4ca;
     font-size: 15px;
     line-height: 1.9;
-    margin-bottom: 17px;
 }
 
 
 /* =========================================
-   CODE EDITOR
+   09. ABOUT CODE EDITOR
 ========================================= */
 
 .about-editor {
     width: 100%;
     max-width: 540px;
     justify-self: end;
+
     background: #080f20;
     border: 1px solid rgba(139, 77, 255, 0.25);
     border-radius: 13px;
@@ -579,18 +571,16 @@ button {
         0 0 30px rgba(139, 77, 255, 0.12);
 }
 
-
-/* EDITOR HEADER */
-
 .editor-header {
     height: 55px;
-    background: #0c1529;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0 18px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 18px;
+
+    background: #0c1529;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .editor-dots {
@@ -637,14 +627,11 @@ button {
     font-size: 16px;
 }
 
-
-/* EDITOR BODY */
-
 .editor-body {
-    padding: 25px 15px;
-    background: #080f20;
     min-height: 290px;
+    padding: 25px 15px;
     overflow-x: auto;
+    background: #080f20;
 }
 
 .editor-code {
@@ -663,39 +650,21 @@ button {
     display: inline-block;
     width: 35px;
     margin-right: 15px;
-    text-align: right;
+
     color: #52617b;
+    text-align: right;
     user-select: none;
 }
 
-.code-purple {
-    color: #bd8aff;
-}
-
-.code-blue {
-    color: #69c9ff;
-}
-
-.code-green {
-    color: #a5e075;
-}
-
-.code-orange {
-    color: #e8a36a;
-}
-
-.code-white {
-    color: #e5eaf5;
-}
-
-
-/* EDITOR FOOTER */
+.code-purple { color: #bd8aff; }
+.code-blue { color: #69c9ff; }
+.code-green { color: #a5e075; }
+.code-orange { color: #e8a36a; }
+.code-white { color: #e5eaf5; }
 
 .editor-footer {
     height: 35px;
     padding: 0 16px;
-    background: #0c1529;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
 
     display: flex;
     align-items: center;
@@ -703,6 +672,9 @@ button {
 
     color: #8f9bb2;
     font-size: 11px;
+
+    background: #0c1529;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .editor-footer span {
@@ -711,15 +683,12 @@ button {
     gap: 7px;
 }
 
-.editor-footer span:first-child i {
-    color: #53d9ff;
-}
+.editor-footer span:first-child i { color: #53d9ff; }
+.editor-footer span:last-child i { color: #70d6a0; }
 
-.editor-footer span:last-child i {
-    color: #70d6a0;
-}
+
 /* =========================================
-   09. SKILLS SECTION
+   10. SKILLS SECTION
 ========================================= */
 
 #skills .skills-container {
@@ -735,7 +704,6 @@ button {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 18px;
-
     width: 100%;
 }
 
@@ -762,7 +730,6 @@ button {
     transform: translateY(-6px);
     background: #10182b;
     border-color: rgba(176, 92, 255, 0.55);
-
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
 }
 
@@ -797,7 +764,6 @@ button {
 
 #skills .skill-card h3 {
     margin-bottom: 7px;
-
     color: #f5f7ff;
     font-size: 14px;
     font-weight: 700;
@@ -836,13 +802,8 @@ button {
     transition: all 0.3s ease;
 }
 
-#skills .skills-arrow.left {
-    left: 0;
-}
-
-#skills .skills-arrow.right {
-    right: 0;
-}
+#skills .skills-arrow.left { left: 0; }
+#skills .skills-arrow.right { right: 0; }
 
 #skills .skills-arrow:hover:not(:disabled) {
     color: white;
@@ -855,15 +816,77 @@ button {
     cursor: not-allowed;
 }
 
+
 /* =========================================
-   10. PROJECTS SECTION
+   11. PROJECTS SECTION
 ========================================= */
 
+.projects-carousel {
+    position: relative;
+    width: 100%;
+    padding: 0 48px;
+}
+
+.projects-window {
+    width: 100%;
+    overflow: hidden;
+}
+
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: flex;
     align-items: stretch;
     gap: 24px;
+    width: 100%;
+}
+
+.projects-grid .project-card {
+    flex: 0 0 calc((100% - 48px) / 3);
+    min-width: 0;
+}
+
+.projects-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateY(-50%);
+
+    color: #b05cff;
+    background: #101629;
+    border: 1px solid rgba(176, 92, 255, 0.35);
+    border-radius: 50%;
+
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.projects-arrow.left { left: 0; }
+.projects-arrow.right { right: 0; }
+
+.projects-arrow:hover:not(:disabled) {
+    color: #ffffff;
+    background: #8150e8;
+    border-color: #8150e8;
+}
+
+.projects-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.projects-page-indicator {
+    margin-top: 20px;
+
+    color: #8994ad;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
 .project-card {
@@ -881,7 +904,6 @@ button {
 .project-card:hover {
     transform: translateY(-7px);
     border-color: rgba(176, 92, 255, 0.5);
-
     box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
 }
 
@@ -907,7 +929,6 @@ button {
 .project-image img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     transition: transform 0.5s ease;
 }
@@ -935,11 +956,10 @@ button {
 
 .project-body {
     flex: 1;
+    padding: 24px;
 
     display: flex;
     flex-direction: column;
-
-    padding: 24px;
 }
 
 .project-number {
@@ -997,8 +1017,9 @@ button {
     border-color: rgba(176, 92, 255, 0.4);
 }
 
+
 /* =========================================
-   11. CONTACT SECTION
+   12. CONTACT SECTION
 ========================================= */
 
 .contact-heading {
@@ -1035,7 +1056,6 @@ button {
 .contact-info h3,
 .contact-form-container h3 {
     margin-bottom: 15px;
-
     font-family: "Poppins", sans-serif;
     font-size: 21px;
 }
@@ -1057,7 +1077,6 @@ button {
 
 .contact-icon {
     flex-shrink: 0;
-
     width: 46px;
     height: 46px;
 
@@ -1083,6 +1102,7 @@ button {
     font-size: 12px;
     overflow-wrap: anywhere;
 }
+
 
 /* Contact form */
 
@@ -1147,12 +1167,12 @@ button {
 }
 
 .contact-btn {
+    padding: 14px 25px;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
-
-    padding: 14px 25px;
 
     color: white;
     font-size: 13px;
@@ -1171,8 +1191,9 @@ button {
     box-shadow: 0 8px 22px rgba(139, 77, 255, 0.25);
 }
 
+
 /* =========================================
-   12. FOOTER
+   13. FOOTER
 ========================================= */
 
 .footer {
@@ -1196,7 +1217,6 @@ button {
 
 .footer-info h3 {
     margin-bottom: 5px;
-
     font-family: "Poppins", sans-serif;
     font-size: 19px;
 }
@@ -1242,12 +1262,12 @@ button {
     color: white;
     background: #8150e8;
     border-color: #8150e8;
-
     transform: translateY(-4px);
 }
 
+
 /* =========================================
-   13. RESPONSIVE ADJUSTMENTS
+   14. RESPONSIVE ADJUSTMENTS
 ========================================= */
 
 @media (max-width: 1050px) {
@@ -1255,8 +1275,8 @@ button {
         gap: 25px;
     }
 
-    .projects-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .projects-grid .project-card {
+        flex-basis: calc((100% - 24px) / 2);
     }
 }
 
@@ -1333,8 +1353,12 @@ button {
         font-size: 43px;
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
+    .projects-carousel {
+        padding: 0 42px;
+    }
+
+    .projects-grid .project-card {
+        flex-basis: 100%;
     }
 
     .form-row {
@@ -1353,8 +1377,9 @@ button {
     }
 }
 
+
 /* =========================================
-   14. ACCESSIBILITY
+   15. ACCESSIBILITY
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {

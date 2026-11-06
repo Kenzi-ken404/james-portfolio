@@ -1,200 +1,179 @@
 
-const skillsGrid = document.getElementById("skillsGrid");
-const skillsPrev = document.getElementById("skillsPrev");
-const skillsNext = document.getElementById("skillsNext");
+document.addEventListener("DOMContentLoaded", function () {
 
-const allSkills = Array.from(
-    skillsGrid.querySelectorAll(".skill-card")
-);
+    // =====================================
+    // 1. SKILLS CAROUSEL
+    // =====================================
 
-let skillsStart = 0;
-let isSliding = false;
+    const skillsGrid = document.getElementById("skillsGrid");
+    const skillsPrev = document.getElementById("skillsPrev");
+    const skillsNext = document.getElementById("skillsNext");
 
-function visibleSkillsCount() {
-    if (window.innerWidth <= 500) return 1;
-    if (window.innerWidth <= 900) return 2;
-    return 4;
-}
+    if (skillsGrid && skillsPrev && skillsNext) {
 
-function showSkills(animate = false, direction = 1) {
-    const count = visibleSkillsCount();
-    const maxStart = Math.max(0, allSkills.length - count);
+        const skills = Array.from(
+            skillsGrid.querySelectorAll(".skill-card")
+        );
 
-    skillsStart = Math.max(0, Math.min(skillsStart, maxStart));
+        let skillsStart = 0;
 
-    const oldVisible = allSkills.filter(
-        card => !card.hidden
-    );
+        function getVisibleSkills() {
+            if (window.innerWidth <= 500) return 1;
+            if (window.innerWidth <= 900) return 2;
+            return 4;
+        }
 
-    const newVisible = allSkills.slice(
-        skillsStart,
-        skillsStart + count
-    );
+        function showSkills() {
+            const count = getVisibleSkills();
+            const maxStart = Math.max(0, skills.length - count);
 
-    if (!animate) {
-        allSkills.forEach(card => {
-            card.hidden = !newVisible.includes(card);
-            card.style.opacity = "1";
-            card.style.transform = "translateX(0)";
-        });
+            skillsStart = Math.min(skillsStart, maxStart);
 
-        skillsPrev.disabled = skillsStart === 0;
-        skillsNext.disabled = skillsStart >= maxStart;
-        return;
-    }
-
-    isSliding = true;
-    skillsPrev.disabled = true;
-    skillsNext.disabled = true;
-
-    // Animate the current cards out.
-    oldVisible.forEach(card => {
-        card.style.transition =
-            "opacity 220ms ease, transform 220ms ease";
-        card.style.opacity = "0";
-        card.style.transform =
-            `translateX(${direction * -35}px)`;
-    });
-
-    setTimeout(() => {
-        // Swap cards after the exit animation.
-        allSkills.forEach(card => {
-            card.hidden = !newVisible.includes(card);
-        });
-
-        // Place new cards just outside their starting position.
-        newVisible.forEach(card => {
-            card.style.transition = "none";
-            card.style.opacity = "0";
-            card.style.transform =
-                `translateX(${direction * 35}px)`;
-        });
-
-        // Apply the starting position before animating.
-        void skillsGrid.offsetWidth;
-
-        // Slide the new cards into place.
-        newVisible.forEach((card, index) => {
-            card.style.transition =
-                `opacity 450ms ease ${index * 45}ms, ` +
-                `transform 500ms cubic-bezier(0.22, 1, 0.36, 1) ${index * 45}ms`;
-
-            card.style.opacity = "1";
-            card.style.transform = "translateX(0)";
-        });
-
-        setTimeout(() => {
-            allSkills.forEach(card => {
-                card.style.transition = "";
-                card.style.opacity = "";
-                card.style.transform = "";
+            skills.forEach((skill, index) => {
+                skill.hidden = index < skillsStart ||
+                               index >= skillsStart + count;
             });
 
-            isSliding = false;
             skillsPrev.disabled = skillsStart === 0;
             skillsNext.disabled = skillsStart >= maxStart;
-        }, 650);
-    }, 230);
-}
+        }
 
-skillsNext.addEventListener("click", () => {
-    if (isSliding) return;
+        skillsNext.addEventListener("click", function () {
+            skillsStart += getVisibleSkills();
+            showSkills();
+        });
 
-    const maxStart = Math.max(
-        0,
-        allSkills.length - visibleSkillsCount()
-    );
+        skillsPrev.addEventListener("click", function () {
+            skillsStart -= getVisibleSkills();
+            showSkills();
+        });
 
-    if (skillsStart >= maxStart) return;
+        window.addEventListener("resize", showSkills);
 
-    skillsStart = Math.min(
-        skillsStart + visibleSkillsCount(),
-        maxStart
-    );
-
-    showSkills(true, 1);
-});
-
-skillsPrev.addEventListener("click", () => {
-    if (isSliding || skillsStart <= 0) return;
-
-    skillsStart = Math.max(
-        0,
-        skillsStart - visibleSkillsCount()
-    );
-
-    showSkills(true, -1);
-});
-
-window.addEventListener("resize", () => {
-    if (!isSliding) {
-        showSkills(false);
+        showSkills();
     }
-});
-
-showSkills(false);
 
 
-document.addEventListener("DOMContentLoaded", function () {
+    // =====================================
+    // 2. NAVBAR ACTIVE SECTION
+    // =====================================
 
     const navLinks = document.querySelectorAll(".nav-links a");
 
-    const sections = Array.from(navLinks)
-        .map(link => {
-            const id = link.getAttribute("href");
-
-            if (!id || !id.startsWith("#")) return null;
-
-            return document.querySelector(id);
-        })
-        .filter(section => section !== null);
-
     function updateNavbar() {
+        let currentSection = null;
 
-        let currentSection = sections[0];
+        navLinks.forEach(link => {
+            const section = document.querySelector(
+                link.getAttribute("href")
+            );
 
-        const activationPoint = 200;
-
-        sections.forEach(section => {
-            const position = section.getBoundingClientRect().top;
-
-            if (position <= activationPoint) {
+            if (section &&
+                section.getBoundingClientRect().top <= 200) {
                 currentSection = section;
             }
         });
 
-        // Always activate the last section at the bottom
+        // Activate the last section at the bottom
         if (window.innerHeight + window.scrollY >=
             document.documentElement.scrollHeight - 5) {
-            currentSection = sections[sections.length - 1];
+            currentSection = document.querySelector(
+                navLinks[navLinks.length - 1].getAttribute("href")
+            );
         }
 
         navLinks.forEach(link => {
-            const target = document.querySelector(
+            const section = document.querySelector(
                 link.getAttribute("href")
             );
 
             link.classList.toggle(
                 "active",
-                target === currentSection
+                section === currentSection
             );
         });
     }
 
-    window.addEventListener("scroll", updateNavbar, {
-        passive: true
-    });
-
-    window.addEventListener("load", updateNavbar);
+    window.addEventListener("scroll", updateNavbar);
     window.addEventListener("resize", updateNavbar);
 
     navLinks.forEach(link => {
-        link.addEventListener("click", function () {
-            setTimeout(updateNavbar, 100);
-        });
+        link.addEventListener("click", updateNavbar);
     });
 
     updateNavbar();
 
-});
 
+    // =====================================
+    // 3. PROJECTS CAROUSEL
+    // =====================================
+
+    const projectsWindow = document.getElementById("projectsWindow");
+    const projectsGrid = document.getElementById("projectsGrid");
+    const projectsPrev = document.getElementById("projectsPrev");
+    const projectsNext = document.getElementById("projectsNext");
+    const pageIndicator = document.getElementById("projectsPageIndicator");
+
+    if (projectsWindow && projectsGrid &&
+        projectsPrev && projectsNext) {
+
+        function updateProjects() {
+            const card = projectsGrid.querySelector(".project-card");
+            const gap = parseFloat(
+                getComputedStyle(projectsGrid).gap
+            ) || 0;
+
+            const step = card
+                ? card.offsetWidth + gap
+                : projectsWindow.clientWidth;
+
+            const maxScroll = projectsWindow.scrollWidth -
+                              projectsWindow.clientWidth;
+
+            const currentPage = Math.round(
+                projectsWindow.scrollLeft / step
+            ) + 1;
+
+            const totalPages = Math.ceil(
+                maxScroll / step
+            ) + 1;
+
+            projectsPrev.disabled = projectsWindow.scrollLeft <= 2;
+            projectsNext.disabled = projectsWindow.scrollLeft >= maxScroll - 2;
+
+            if (pageIndicator) {
+                pageIndicator.textContent =
+                    currentPage + " / " + totalPages;
+            }
+        }
+
+        function moveProjects(direction) {
+            const card = projectsGrid.querySelector(".project-card");
+            const gap = parseFloat(
+                getComputedStyle(projectsGrid).gap
+            ) || 0;
+
+            const step = card
+                ? card.offsetWidth + gap
+                : projectsWindow.clientWidth;
+
+            projectsWindow.scrollLeft += direction * step;
+
+            updateProjects();
+        }
+
+        projectsPrev.addEventListener("click", function () {
+            moveProjects(-1);
+        });
+
+        projectsNext.addEventListener("click", function () {
+            moveProjects(1);
+        });
+
+        projectsWindow.addEventListener("scroll", updateProjects);
+        window.addEventListener("resize", updateProjects);
+
+        updateProjects();
+    }
+
+});

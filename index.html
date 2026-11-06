@@ -13,10 +13,7 @@
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <!-- CUSTOM CSS -->
@@ -109,20 +106,6 @@
                     </a>
 
                 </div>
-
-                <!-- QUICK INFORMATION -->
-
-                <div class="quick-info">
-
-                    <span>
-                        <i class="fa-solid fa-location-dot"></i>
-                        Dumaguete City
-                    </span>
-
-                    <span>
-                        <i class="fa-solid fa-code"></i>
-                        Web Development
-                    </span>
 
                 </div>
 
@@ -229,6 +212,7 @@
                 </div>
 
 
+               
                 <!-- EDITOR BODY -->
 
                 <div class="editor-body">
@@ -347,6 +331,8 @@
     </div>
 
 </section>
+
+
 
 
         <!-- =================================
@@ -553,166 +539,153 @@
             </div>
 
 
-            <!-- PROJECT GRID -->
+            <!-- PROJECT CAROUSEL -->
 
-            <div class="projects-grid">
+            <div class="projects-carousel">
 
+                <button
+                    class="projects-arrow left"
+                    id="projectsPrev"
+                    type="button"
+                    aria-label="Previous projects"
+                >
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
 
-                <!-- PROJECT 01 -->
+                <div class="projects-window" id="projectsWindow">
 
-                <article class="project-card reveal">
+                    <div class="projects-grid" id="projectsGrid">
 
-                    <div class="project-image">
+                        <!-- PROJECT 01 -->
+                        <article class="project-card reveal">
+                            <div class="project-image">
+                                <img
+                                    src="projects pics/judging.jpg"
+                                    alt="Automated Judging System preview"
+                                    loading="lazy"
+                                >
+                                <span class="project-tag">Judging System</span>
+                            </div>
 
-                        <img
-                            src="projects pics/judging.jpg"
-                            alt="Automated Judging System preview"
-                            loading="lazy"
-                        >
+                            <div class="project-body">
+                                <p class="project-number">01 / 04</p>
+                                <h3>Automated Judging System</h3>
+                                <p>
+                                    A web-based judging platform designed to
+                                    automate competition scoring, rank
+                                    participants, and generate printable reports.
+                                </p>
+                                <div class="project-tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>PHP</span>
+                                    <span>MySQL</span>
+                                </div>
+                            </div>
+                        </article>
 
-                        <span class="project-tag">
-                            Web System
-                        </span>
+                        <!-- PROJECT 02 -->
+                        <article class="project-card reveal">
+                            <div class="project-image">
+                                <img
+                                    src="projects pics/hjmf.png"
+                                    alt="Web Photobooth preview"
+                                    loading="lazy"
+                                >
+                                <span class="project-tag">Photobooth Web</span>
+                            </div>
 
-                    </div>
+                            <div class="project-body">
+                                <p class="project-number">02 / 04</p>
+                                <h3>Web Photobooth</h3>
+                                <p>
+                                    A customized web photobooth for a church
+                                    project featuring camera capture, themed
+                                    frames, gallery downloads, and printing.
+                                </p>
+                                <div class="project-tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>Camera API</span>
+                                </div>
+                            </div>
+                        </article>
 
+                        <!-- PROJECT 03 -->
+                        <article class="project-card reveal">
+                            <div class="project-image">
+                                <img
+                                    src="projects pics/coffee.png"
+                                    alt="Coffee Shop Point of Sale preview"
+                                    loading="lazy"
+                                >
+                                <span class="project-tag">Management System</span>
+                            </div>
 
-                    <div class="project-body">
+                            <div class="project-body">
+                                <p class="project-number">03 / 04</p>
+                                <h3>Coffee Shop POS</h3>
+                                <p>
+                                    A point-of-sale application concept designed
+                                    to manage coffee shop inventory, sales
+                                    transactions, customer records, receipts,
+                                    and daily sales reports.
+                                </p>
+                                <div class="project-tech">
+                                    <span>PHP</span>
+                                    <span>MySQL</span>
+                                    <span>Bootstrap</span>
+                                    <span>JavaScript</span>
+                                </div>
+                            </div>
+                        </article>
 
-                        <p class="project-number">
-                            01 / 03
-                        </p>
+                        <!-- PROJECT 04 -->
+                        <article class="project-card reveal">
+                            <div class="project-image">
+                                <img
+                                    src="projects pics/avs.png"
+                                    alt="Automated Voting System preview"
+                                    loading="lazy"
+                                >
+                                <span class="project-tag">Voting System</span>
+                            </div>
 
-                        <h3>
-                            Automated Judging System
-                        </h3>
-
-                        <p>
-                            A web-based judging platform designed to
-                            automate competition scoring, rank
-                            participants, and generate printable reports.
-                        </p>
-
-
-                        <div class="project-tech">
-
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>PHP</span>
-                            <span>MySQL</span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- PROJECT 02 -->
-
-                <article class="project-card reveal">
-
-                    <div class="project-image">
-
-                        <img
-                            src="projects pics/hjmf.png"
-                            alt="Web Photobooth preview"
-                            loading="lazy"
-                        >
-
-                        <span class="project-tag">
-                            Creative Web
-                        </span>
-
-                    </div>
-
-
-                    <div class="project-body">
-
-                        <p class="project-number">
-                            02 / 03
-                        </p>
-
-                        <h3>
-                            Web Photobooth
-                        </h3>
-
-                        <p>
-                            A customized web photobooth for a church
-                            project featuring camera capture, themed
-                            frames, gallery downloads, and printing.
-                        </p>
-
-
-                        <div class="project-tech">
-
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Camera API</span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- PROJECT 03 -->
-
-                <article class="project-card reveal">
-
-                    <div class="project-image">
-
-                        <img
-                            src="projects pics/coffee.png"
-                            alt="Coffee Shop Point of Sale preview"
-                            loading="lazy"
-                        >
-
-                        <span class="project-tag">
-                            Management System
-                        </span>
-
-                    </div>
-
-
-                    <div class="project-body">
-
-                        <p class="project-number">
-                            03 / 03
-                        </p>
-
-                        <h3>
-                            Coffee Shop POS
-                        </h3>
-
-                        <p>
-                            A point-of-sale application concept designed
-                            to manage coffee shop inventory, sales
-                            transactions, customer records, receipts,
-                            and daily sales reports.
-                        </p>
-
-
-                        <div class="project-tech">
-
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
-                            <span>JavaScript</span>
-
-                        </div>
+                            <div class="project-body">
+                                <p class="project-number">04 / 04</p>
+                                <h3>Automated Voting System</h3>
+                                <p>
+                                    A digital voting platform designed to
+                                    manage voter information, record votes,
+                                    count results, and display election
+                                    outcomes efficiently.
+                                </p>
+                                <div class="project-tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>PHP</span>
+                                    <span>MySQL</span>
+                                      <span>Bootstrap</span>
+                                </div>
+                            </div>
+                        </article>
 
                     </div>
+                </div>
 
-                </article>
+                <button
+                    class="projects-arrow right"
+                    id="projectsNext"
+                    type="button"
+                    aria-label="Next projects"
+                >
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
 
             </div>
-
         </section>
 
 
@@ -996,13 +969,6 @@
         </div>
 
     </footer>
-
-
-
-    <!-- =================================
-         JAVASCRIPT
-    ================================== -->
-
     <script src="script.js"></script>
 
 </body>
