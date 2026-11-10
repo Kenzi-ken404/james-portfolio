@@ -1,179 +1,186 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
-    // =====================================
-    // 1. SKILLS CAROUSEL
-    // =====================================
-
+    /* =========================================
+       1. SKILLS CAROUSEL
+       Shows 4 cards on desktop, 2 on tablet/phone
+    ========================================= */
     const skillsGrid = document.getElementById("skillsGrid");
     const skillsPrev = document.getElementById("skillsPrev");
     const skillsNext = document.getElementById("skillsNext");
+    const skillCards = skillsGrid.querySelectorAll(".skill-card");
 
-    if (skillsGrid && skillsPrev && skillsNext) {
+    let firstCard = 0; // index of the first visible card
 
-        const skills = Array.from(
-            skillsGrid.querySelectorAll(".skill-card")
-        );
-
-        let skillsStart = 0;
-
-        function getVisibleSkills() {
-            if (window.innerWidth <= 500) return 1;
-            if (window.innerWidth <= 900) return 2;
-            return 4;
+    function cardsPerPage() {
+        if (window.innerWidth <= 900) {
+            return 2;
         }
-
-        function showSkills() {
-            const count = getVisibleSkills();
-            const maxStart = Math.max(0, skills.length - count);
-
-            skillsStart = Math.min(skillsStart, maxStart);
-
-            skills.forEach((skill, index) => {
-                skill.hidden = index < skillsStart ||
-                               index >= skillsStart + count;
-            });
-
-            skillsPrev.disabled = skillsStart === 0;
-            skillsNext.disabled = skillsStart >= maxStart;
-        }
-
-        skillsNext.addEventListener("click", function () {
-            skillsStart += getVisibleSkills();
-            showSkills();
-        });
-
-        skillsPrev.addEventListener("click", function () {
-            skillsStart -= getVisibleSkills();
-            showSkills();
-        });
-
-        window.addEventListener("resize", showSkills);
-
-        showSkills();
+        return 4;
     }
 
+    function showSkills() {
+        const perPage = cardsPerPage();
+        const lastStart = Math.max(0, skillCards.length - perPage);
 
-    // =====================================
-    // 2. NAVBAR ACTIVE SECTION
-    // =====================================
+        // keep firstCard between 0 and lastStart
+        firstCard = Math.max(0, Math.min(firstCard, lastStart));
 
+        // show only the cards inside the current page
+        skillCards.forEach(function (card, index) {
+            card.hidden = index < firstCard || index >= firstCard + perPage;
+        });
+
+        skillsPrev.disabled = firstCard === 0;
+        skillsNext.disabled = firstCard >= lastStart;
+    }
+
+    skillsNext.addEventListener("click", function () {
+        firstCard += cardsPerPage();
+        showSkills();
+    });
+
+    skillsPrev.addEventListener("click", function () {
+        firstCard -= cardsPerPage();
+        showSkills();
+    });
+
+    window.addEventListener("resize", showSkills);
+    showSkills();
+
+
+    /* =========================================
+       2. ACTIVE NAVBAR LINK
+       Highlights the link of the section you are viewing
+    ========================================= */
     const navLinks = document.querySelectorAll(".nav-links a");
 
-    function updateNavbar() {
-        let currentSection = null;
+    function updateActiveLink() {
+        let currentId = "";
 
-        navLinks.forEach(link => {
-            const section = document.querySelector(
-                link.getAttribute("href")
-            );
+        // the last section that has reached the top of the screen
+        navLinks.forEach(function (link) {
+            const id = link.getAttribute("href");
+            const section = document.querySelector(id);
 
-            if (section &&
-                section.getBoundingClientRect().top <= 200) {
-                currentSection = section;
+            if (section && section.getBoundingClientRect().top <= 200) {
+                currentId = id;
             }
         });
 
-        // Activate the last section at the bottom
-        if (window.innerHeight + window.scrollY >=
-            document.documentElement.scrollHeight - 5) {
-            currentSection = document.querySelector(
-                navLinks[navLinks.length - 1].getAttribute("href")
-            );
+        // at the very bottom of the page, highlight the last link
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 5;
+        if (atBottom) {
+            currentId = navLinks[navLinks.length - 1].getAttribute("href");
         }
 
-        navLinks.forEach(link => {
-            const section = document.querySelector(
-                link.getAttribute("href")
-            );
-
-            link.classList.toggle(
-                "active",
-                section === currentSection
-            );
+        navLinks.forEach(function (link) {
+            link.classList.toggle("active", link.getAttribute("href") === currentId);
         });
     }
 
-    window.addEventListener("scroll", updateNavbar);
-    window.addEventListener("resize", updateNavbar);
+    window.addEventListener("scroll", updateActiveLink);
+    window.addEventListener("resize", updateActiveLink);
+    updateActiveLink();
 
-    navLinks.forEach(link => {
-        link.addEventListener("click", updateNavbar);
+
+    /* =========================================
+       3. HAMBURGER MENU
+    ========================================= */
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navLinks");
+
+    function setMenu(isOpen) {
+        navMenu.classList.toggle("open", isOpen);
+        menuToggle.classList.toggle("open", isOpen);
+        menuToggle.setAttribute("aria-expanded", isOpen);
+    }
+
+    // open / close with the button
+    menuToggle.addEventListener("click", function () {
+        setMenu(!navMenu.classList.contains("open"));
     });
 
-    updateNavbar();
+    // close when a link is clicked
+    navMenu.addEventListener("click", function (event) {
+        if (event.target.closest("a")) {
+            setMenu(false);
+        }
+    });
+
+    // close when clicking outside the navbar
+    document.addEventListener("click", function (event) {
+        if (!event.target.closest("#navbar")) {
+            setMenu(false);
+        }
+    });
+
+    // close with the Escape key
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            setMenu(false);
+        }
+    });
+
+    // close when the screen becomes desktop size
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 768) {
+            setMenu(false);
+        }
+    });
 
 
-    // =====================================
-    // 3. PROJECTS CAROUSEL
-    // =====================================
-
+    /* =========================================
+       4. PROJECTS CAROUSEL
+       Scrolls the window one card at a time
+    ========================================= */
     const projectsWindow = document.getElementById("projectsWindow");
     const projectsGrid = document.getElementById("projectsGrid");
     const projectsPrev = document.getElementById("projectsPrev");
     const projectsNext = document.getElementById("projectsNext");
-    const pageIndicator = document.getElementById("projectsPageIndicator");
 
-    if (projectsWindow && projectsGrid &&
-        projectsPrev && projectsNext) {
-
-        function updateProjects() {
-            const card = projectsGrid.querySelector(".project-card");
-            const gap = parseFloat(
-                getComputedStyle(projectsGrid).gap
-            ) || 0;
-
-            const step = card
-                ? card.offsetWidth + gap
-                : projectsWindow.clientWidth;
-
-            const maxScroll = projectsWindow.scrollWidth -
-                              projectsWindow.clientWidth;
-
-            const currentPage = Math.round(
-                projectsWindow.scrollLeft / step
-            ) + 1;
-
-            const totalPages = Math.ceil(
-                maxScroll / step
-            ) + 1;
-
-            projectsPrev.disabled = projectsWindow.scrollLeft <= 2;
-            projectsNext.disabled = projectsWindow.scrollLeft >= maxScroll - 2;
-
-            if (pageIndicator) {
-                pageIndicator.textContent =
-                    currentPage + " / " + totalPages;
-            }
-        }
-
-        function moveProjects(direction) {
-            const card = projectsGrid.querySelector(".project-card");
-            const gap = parseFloat(
-                getComputedStyle(projectsGrid).gap
-            ) || 0;
-
-            const step = card
-                ? card.offsetWidth + gap
-                : projectsWindow.clientWidth;
-
-            projectsWindow.scrollLeft += direction * step;
-
-            updateProjects();
-        }
-
-        projectsPrev.addEventListener("click", function () {
-            moveProjects(-1);
-        });
-
-        projectsNext.addEventListener("click", function () {
-            moveProjects(1);
-        });
-
-        projectsWindow.addEventListener("scroll", updateProjects);
-        window.addEventListener("resize", updateProjects);
-
-        updateProjects();
+    // one step = width of one card + the gap between cards
+    function getStep() {
+        const card = projectsGrid.querySelector(".project-card");
+        const gap = parseFloat(getComputedStyle(projectsGrid).gap) || 0;
+        return card.offsetWidth + gap;
     }
+
+    // disable the arrows at the start and the end
+    function updateProjectArrows() {
+        const maxScroll = projectsWindow.scrollWidth - projectsWindow.clientWidth;
+
+        projectsPrev.disabled = projectsWindow.scrollLeft <= 2;
+        projectsNext.disabled = projectsWindow.scrollLeft >= maxScroll - 2;
+    }
+
+    function moveProjects(direction) {
+        projectsWindow.scrollLeft += direction * getStep();
+        updateProjectArrows();
+    }
+
+    projectsPrev.addEventListener("click", function () {
+        moveProjects(-1);
+    });
+
+    projectsNext.addEventListener("click", function () {
+        moveProjects(1);
+    });
+
+    projectsWindow.addEventListener("scroll", updateProjectArrows);
+    window.addEventListener("resize", updateProjectArrows);
+    updateProjectArrows();
+
+
+    /* =========================================
+       5. CONTACT FORM
+       Mockup only: shows the success box, nothing is sent
+    ========================================= */
+    const contactForm = document.querySelector(".contact-form-container form");
+
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();       // stop the page from reloading
+        contactForm.reset();          // clear the fields
+        window.location.hash = "sent"; // CSS shows the success box
+    });
 
 });

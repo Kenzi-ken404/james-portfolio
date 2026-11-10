@@ -1,72 +1,52 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="James Carl K. Acaso - BSIT Student and Aspiring Web Developer Portfolio">
-
     <title>James Carl K. Acaso | Portfolio</title>
 
-    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-    <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- =================================
-         BACKGROUND EFFECTS
-    ================================== -->
-
     <div class="background-grid"></div>
-
     <div class="glow glow-one"></div>
     <div class="glow glow-two"></div>
 
-
-    <!-- =================================
-         NAVIGATION
-    ================================== -->
-
+    <!-- NAVIGATION -->
     <header class="navbar" id="navbar">
-
         <a href="#home" class="brand" aria-label="Home">
             <span>J</span><b>C</b>
         </a>
 
         <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
-
         </nav>
 
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
-
 
     <main>
 
-        <!-- =================================
-             HOME / HERO SECTION
-        ================================== -->
-
+        <!-- HERO -->
         <section class="hero section" id="home">
 
-            <!-- HERO TEXT -->
-
             <div class="hero-copy">
-
                 <p class="eyebrow">
                     <span></span>
                     HELLO, I'M
@@ -91,10 +71,7 @@
                     clean, and user-friendly websites.
                 </p>
 
-                <!-- HERO BUTTONS -->
-
                 <div class="hero-actions">
-
                     <a href="#projects" class="btn btn-primary">
                         View My Projects
                         <i class="fa-solid fa-arrow-right"></i>
@@ -104,466 +81,217 @@
                         View My Resume
                         <i class="fa-solid fa-file-lines"></i>
                     </a>
-
                 </div>
-
-                </div>
-
             </div>
 
+            <div class="hero-image">
+                <div class="profile-orbit"></div>
 
-
-
-<div class="hero-image">
-
-    <div class="profile-orbit"></div>
-
-    <div class="profile-frame">
-        <img src="carl.jpg" alt="James Carl Profile">
-    </div>
-
-</div>
-
+                <div class="profile-frame">
+                    <img src="carl.jpg" alt="James Carl Profile">
+                </div>
+            </div>
 
         </section>
 
 
-<!-- =================================
-     ABOUT SECTION
-================================== -->
+        <!-- ABOUT -->
+        <section class="about-section" id="about">
+            <div class="about-container">
 
-<section class="about-section" id="about">
+                <div class="about-heading">
+                    <p>GET TO KNOW ME</p>
+                    <h2>About <span>Me</span></h2>
+                </div>
 
-    <div class="about-container">
+                <div class="about-content">
 
-        <!-- SECTION HEADING -->
+                    <div class="about-text">
+                        <h3>Hello, I'm James Carl K. Acaso</h3>
 
-        <div class="about-heading">
+                        <p>
+                            I am a Bachelor of Science in Information
+                            Technology student who is passionate about
+                            programming, web development, and learning
+                            new technologies.
+                        </p>
 
-            <p>GET TO KNOW ME</p>
+                        <p>
+                            I enjoy exploring new ideas, improving my
+                            skills, and creating simple and useful
+                            solutions through technology. I am
+                            particularly interested in developing
+                            websites and applications that provide
+                            meaningful user experiences.
+                        </p>
 
-            <h2>
-                About <span>Me</span>
-            </h2>
+                        <p>
+                            My goal is to become a professional web
+                            developer and continue growing in the
+                            information technology field.
+                        </p>
+                    </div>
 
-        </div>
+                    <!-- Code editor -->
+                    <div class="about-editor">
 
+                        <div class="editor-header">
+                            <div class="editor-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
 
-        <!-- ABOUT CONTENT -->
+                            <div class="editor-title">
+                                <i class="fa-brands fa-html5"></i>
+                                about-me.html
+                            </div>
 
-        <div class="about-content">
+                            <div class="editor-menu">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                        </div>
 
-            <!-- LEFT: ABOUT TEXT -->
+                        <div class="editor-body">
+                            <div class="editor-code">
+                                <div class="code-line"><span class="line-number">01</span> <span class="code-purple">&lt;!DOCTYPE</span> <span class="code-blue"> html</span> <span class="code-purple">&gt;</span></div>
+                                <div class="code-line"><span class="line-number">02</span> <span class="code-purple">&lt;html</span> <span class="code-blue"> lang</span>= <span class="code-green">"en"</span> <span class="code-purple">&gt;</span></div>
+                                <div class="code-line"><span class="line-number">03</span> <span class="code-purple">&lt;head&gt;</span></div>
+                                <div class="code-line"><span class="line-number">04</span> &nbsp;&nbsp; <span class="code-purple">&lt;title&gt;</span> <span class="code-white">About Me</span> <span class="code-purple">&lt;/title&gt;</span></div>
+                                <div class="code-line"><span class="line-number">05</span> <span class="code-purple">&lt;/head&gt;</span></div>
+                                <div class="code-line"><span class="line-number">06</span> <span class="code-purple">&lt;body&gt;</span></div>
+                                <div class="code-line"><span class="line-number">07</span> &nbsp;&nbsp; <span class="code-purple">&lt;h1&gt;</span></div>
+                                <div class="code-line"><span class="line-number">08</span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="code-orange">"Hello, World! Or Hello Lord?"</span></div>
+                                <div class="code-line"><span class="line-number">09</span> &nbsp;&nbsp; <span class="code-purple">&lt;/h1&gt;</span></div>
+                                <div class="code-line"><span class="line-number">10</span> &nbsp;&nbsp; <span class="code-purple">&lt;p&gt;</span></div>
+                                <div class="code-line"><span class="line-number">11</span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="code-white">System.out.Println("Hi World");</span></div>
+                                <div class="code-line"><span class="line-number">12</span> &nbsp;&nbsp; <span class="code-purple">&lt;/p&gt;</span></div>
+                                <div class="code-line"><span class="line-number">13</span> <span class="code-purple">&lt;/body&gt;</span></div>
+                                <div class="code-line"><span class="line-number">14</span> <span class="code-purple">&lt;/html&gt;</span></div>
+                            </div>
+                        </div>
 
-            <div class="about-text">
+                        <div class="editor-footer">
+                            <span>
+                                <i class="fa-solid fa-code"></i>
+                                HTML
+                            </span>
 
-                <h3>
-                    Hello, I'm James Carl K. Acaso
-                </h3>
+                            <span>
+                                <i class="fa-solid fa-circle-check"></i>
+                                Ready to Code
+                            </span>
+                        </div>
 
-                <p>
-                    I am a Bachelor of Science in Information
-                    Technology student who is passionate about
-                    programming, web development, and learning
-                    new technologies.
-                </p>
-
-                <p>
-                    I enjoy exploring new ideas, improving my
-                    skills, and creating simple and useful
-                    solutions through technology. I am
-                    particularly interested in developing
-                    websites and applications that provide
-                    meaningful user experiences.
-                </p>
-
-                <p>
-                    My goal is to become a professional web
-                    developer and continue growing in the
-                    information technology field.
-                </p>
-
+                    </div>
+                </div>
             </div>
+        </section>
 
 
-            <!-- RIGHT: CODE EDITOR -->
-
-            <div class="about-editor">
-
-                <!-- EDITOR HEADER -->
-
-                <div class="editor-header">
-
-                    <div class="editor-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <div class="editor-title">
-                        <i class="fa-brands fa-html5"></i>
-                        about-me.html
-                    </div>
-
-                    <div class="editor-menu">
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </div>
-
-                </div>
-
-
-               
-                <!-- EDITOR BODY -->
-
-                <div class="editor-body">
-
-                    <div class="editor-code">
-
-                        <div class="code-line">
-                            <span class="line-number">01</span>
-                            <span class="code-purple">&lt;!DOCTYPE</span>
-                            <span class="code-blue"> html</span>
-                            <span class="code-purple">&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">02</span>
-                            <span class="code-purple">&lt;html</span>
-                            <span class="code-blue"> lang</span>=
-                            <span class="code-green">"en"</span>
-                            <span class="code-purple">&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">03</span>
-                            <span class="code-purple">&lt;head&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">04</span>
-                            &nbsp;&nbsp;
-                            <span class="code-purple">&lt;title&gt;</span>
-                            <span class="code-white">About Me</span>
-                            <span class="code-purple">&lt;/title&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">05</span>
-                            <span class="code-purple">&lt;/head&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">06</span>
-                            <span class="code-purple">&lt;body&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">07</span>
-                            &nbsp;&nbsp;
-                            <span class="code-purple">&lt;h1&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">08</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class="code-orange">"Hello, World! Or Hello Lord?"</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">09</span>
-                            &nbsp;&nbsp;
-                            <span class="code-purple">&lt;/h1&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">10</span>
-                            &nbsp;&nbsp;
-                            <span class="code-purple">&lt;p&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">11</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class="code-white">System.out.Println("Hi World");</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">12</span>
-                            &nbsp;&nbsp;
-                            <span class="code-purple">&lt;/p&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">13</span>
-                            <span class="code-purple">&lt;/body&gt;</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="line-number">14</span>
-                            <span class="code-purple">&lt;/html&gt;</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EDITOR FOOTER -->
-
-                <div class="editor-footer">
-
-                    <span>
-                        <i class="fa-solid fa-code"></i>
-                        HTML
-                    </span>
-
-                    <span>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Ready to Code
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-
-        <!-- =================================
-             SKILLS SECTION
-        ================================== -->
-
+        <!-- SKILLS -->
         <section class="section" id="skills">
 
-            <!-- SECTION HEADING -->
-
             <div class="section-heading reveal">
-
-                <p class="section-label">
-                    MY SKILLS
-                </p>
-
-                <h2>
-                    Technologies <span>I Use</span>
-                </h2>
-
+                <p class="section-label">MY SKILLS</p>
+                <h2>Technologies <span>I Use</span></h2>
                 <p class="heading-description">
                     Tools and technologies I am currently learning
                     and using in my school and personal projects.
                 </p>
-
             </div>
-
-
-            <!-- SKILLS CONTAINER -->
 
             <div class="skills-container">
 
-                <!-- PREVIOUS BUTTON -->
-
-                <button
-                    class="skills-arrow left"
-                    id="skillsPrev"
-                    type="button"
-                    aria-label="Previous skills"
-                >
+                <button class="skills-arrow left" id="skillsPrev" type="button" aria-label="Previous skills">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
 
-
-                <!-- SKILLS GRID -->
-
                 <div class="skills-grid" id="skillsGrid">
 
-                    <!-- HTML -->
-
                     <article class="skill-card reveal">
-
-                        <div class="skill-icon html">
-                            <i class="fa-brands fa-html5"></i>
-                        </div>
-
+                        <div class="skill-icon html"><i class="fa-brands fa-html5"></i></div>
                         <h3>HTML</h3>
                         <p>Web Structure</p>
-
                     </article>
 
-
-                    <!-- CSS -->
-
                     <article class="skill-card reveal">
-
-                        <div class="skill-icon css">
-                            <i class="fa-brands fa-css3-alt"></i>
-                        </div>
-
+                        <div class="skill-icon css"><i class="fa-brands fa-css3-alt"></i></div>
                         <h3>CSS</h3>
                         <p>Web Styling</p>
-
                     </article>
 
-
-                    <!-- JAVASCRIPT -->
-
                     <article class="skill-card reveal">
-
-                        <div class="skill-icon js">
-                            <i class="fa-brands fa-js"></i>
-                        </div>
-
+                        <div class="skill-icon js"><i class="fa-brands fa-js"></i></div>
                         <h3>JavaScript</h3>
                         <p>Interactivity</p>
-
                     </article>
 
-
-                    <!-- PYTHON -->
-
                     <article class="skill-card reveal">
-
-                        <div class="skill-icon python">
-                            <i class="fa-brands fa-python"></i>
-                        </div>
-
+                        <div class="skill-icon python"><i class="fa-brands fa-python"></i></div>
                         <h3>Python</h3>
                         <p>Programming</p>
-
                     </article>
 
-
-                    <!-- PHP -->
-
                     <article class="skill-card reveal">
-
-                        <div class="skill-icon php">
-                            <i class="fa-brands fa-php"></i>
-                        </div>
-
+                        <div class="skill-icon php"><i class="fa-brands fa-php"></i></div>
                         <h3>PHP</h3>
                         <p>Backend Development</p>
-
                     </article>
 
-
-                    <!-- JAVA -->
-
                     <article class="skill-card reveal">
-
-                        <div class="skill-icon java">
-                            <i class="fa-brands fa-java"></i>
-                        </div>
-
+                        <div class="skill-icon java"><i class="fa-brands fa-java"></i></div>
                         <h3>Java</h3>
                         <p>Software Development</p>
-
                     </article>
 
-
-                    <!-- MYSQL -->
-
                     <article class="skill-card reveal">
-
-                        <div class="skill-icon mysql">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-
+                        <div class="skill-icon mysql"><i class="fa-solid fa-database"></i></div>
                         <h3>MySQL</h3>
                         <p>Database Management</p>
-
                     </article>
 
-
-                    <!-- GITHUB -->
-
                     <article class="skill-card reveal">
-
-                        <div class="skill-icon tools">
-                            <i class="fa-brands fa-github"></i>
-                        </div>
-
+                        <div class="skill-icon tools"><i class="fa-brands fa-github"></i></div>
                         <h3>GitHub</h3>
                         <p>Version Control</p>
-
                     </article>
 
                 </div>
 
-
-                <!-- NEXT BUTTON -->
-
-                <button
-                    class="skills-arrow right"
-                    id="skillsNext"
-                    type="button"
-                    aria-label="Next skills"
-                >
+                <button class="skills-arrow right" id="skillsNext" type="button" aria-label="Next skills">
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
 
             </div>
-
         </section>
 
 
-
-        <!-- =================================
-             PROJECTS SECTION
-        ================================== -->
-
+        <!-- PROJECTS -->
         <section class="section" id="projects">
 
-            <!-- SECTION HEADING -->
-
             <div class="section-heading reveal">
-
-                <p class="section-label">
-                    MY PROJECTS
-                </p>
-
-                <h2>
-                    Featured <span>Work</span>
-                </h2>
-
+                <p class="section-label">MY PROJECTS</p>
+                <h2>Featured <span>Work</span></h2>
                 <p class="heading-description">
                     Selected school and personal projects that
                     represent my current skills and creativity
                     in web development.
                 </p>
-
             </div>
-
-
-            <!-- PROJECT CAROUSEL -->
 
             <div class="projects-carousel">
 
-                <button
-                    class="projects-arrow left"
-                    id="projectsPrev"
-                    type="button"
-                    aria-label="Previous projects"
-                >
+                <button class="projects-arrow left" id="projectsPrev" type="button" aria-label="Previous projects">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
 
                 <div class="projects-window" id="projectsWindow">
-
                     <div class="projects-grid" id="projectsGrid">
 
-                        <!-- PROJECT 01 -->
                         <article class="project-card reveal">
                             <div class="project-image">
-                                <img
-                                    src="projects pics/judging.jpg"
-                                    alt="Automated Judging System preview"
-                                    loading="lazy"
-                                >
+                                <img src="projects pics/judging.jpg" alt="Automated Judging System preview" loading="lazy">
                                 <span class="project-tag">Judging System</span>
                             </div>
 
@@ -585,14 +313,9 @@
                             </div>
                         </article>
 
-                        <!-- PROJECT 02 -->
                         <article class="project-card reveal">
                             <div class="project-image">
-                                <img
-                                    src="projects pics/hjmf.png"
-                                    alt="Web Photobooth preview"
-                                    loading="lazy"
-                                >
+                                <img src="projects pics/hjmf.png" alt="Web Photobooth preview" loading="lazy">
                                 <span class="project-tag">Photobooth Web</span>
                             </div>
 
@@ -613,14 +336,9 @@
                             </div>
                         </article>
 
-                        <!-- PROJECT 03 -->
                         <article class="project-card reveal">
                             <div class="project-image">
-                                <img
-                                    src="projects pics/coffee.png"
-                                    alt="Coffee Shop Point of Sale preview"
-                                    loading="lazy"
-                                >
+                                <img src="projects pics/coffee.png" alt="Coffee Shop Point of Sale preview" loading="lazy">
                                 <span class="project-tag">Management System</span>
                             </div>
 
@@ -642,14 +360,9 @@
                             </div>
                         </article>
 
-                        <!-- PROJECT 04 -->
                         <article class="project-card reveal">
                             <div class="project-image">
-                                <img
-                                    src="projects pics/avs.png"
-                                    alt="Automated Voting System preview"
-                                    loading="lazy"
-                                >
+                                <img src="projects pics/avs.png" alt="Automated Voting System preview" loading="lazy">
                                 <span class="project-tag">Voting System</span>
                             </div>
 
@@ -668,7 +381,7 @@
                                     <span>JavaScript</span>
                                     <span>PHP</span>
                                     <span>MySQL</span>
-                                      <span>Bootstrap</span>
+                                    <span>Bootstrap</span>
                                 </div>
                             </div>
                         </article>
@@ -676,12 +389,7 @@
                     </div>
                 </div>
 
-                <button
-                    class="projects-arrow right"
-                    id="projectsNext"
-                    type="button"
-                    aria-label="Next projects"
-                >
+                <button class="projects-arrow right" id="projectsNext" type="button" aria-label="Next projects">
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
 
@@ -689,286 +397,131 @@
         </section>
 
 
-
-        <!-- =================================
-             CONTACT SECTION
-        ================================== -->
-
+        <!-- CONTACT -->
         <section class="contact-section" id="contact">
-
             <div class="contact-container">
 
-
-                <!-- SECTION HEADING -->
-
                 <div class="contact-heading">
-
                     <p>GET IN TOUCH</p>
-
-                    <h2>
-                        Contact <span>Me</span>
-                    </h2>
-
+                    <h2>Contact <span>Me</span></h2>
                     <p class="contact-description">
                         Have a question or want to work together?
                         Feel free to send me a message.
                     </p>
-
                 </div>
-
-
-
-                <!-- CONTACT CONTENT -->
 
                 <div class="contact-content">
 
-
-                    <!-- LEFT: CONTACT INFORMATION -->
-
                     <div class="contact-info">
-
-                        <h3>
-                            Let's Talk
-                        </h3>
+                        <h3>Let's Talk</h3>
 
                         <p class="contact-info-text">
                             I'm always open to discussing new
                             projects, opportunities, and ideas.
                         </p>
 
-
-                        <!-- EMAIL -->
-
                         <div class="contact-item">
-
                             <div class="contact-icon">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
-
                             <div>
-
                                 <h4>Email Address</h4>
-
-                                <p>
-                                    jamescarlacaso123@gmail.com
-                                </p>
-
+                                <p>jamescarlacaso123@gmail.com</p>
                             </div>
-
                         </div>
 
-
-                        <!-- LOCATION -->
-
                         <div class="contact-item">
-
                             <div class="contact-icon">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
-
                             <div>
-
                                 <h4>Location</h4>
-
-                                <p>
-                                    Dumaguete City, Philippines
-                                </p>
-
+                                <p>Dumaguete City, Philippines</p>
                             </div>
-
                         </div>
 
-
-                        <!-- AVAILABILITY -->
-
                         <div class="contact-item">
-
                             <div class="contact-icon">
                                 <i class="fa-solid fa-code"></i>
                             </div>
-
                             <div>
-
                                 <h4>Interest</h4>
-
-                                <p>
-                                    Web Development and Programming
-                                </p>
-
+                                <p>Web Development and Programming</p>
                             </div>
-
                         </div>
-
                     </div>
 
-
-
-                    <!-- RIGHT: CONTACT FORM -->
-
                     <div class="contact-form-container">
+                        <h3>Send Me a Message</h3>
 
-                        <h3>
-                            Send Me a Message
-                        </h3>
+                        <div class="form-success" id="sent">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <h4>Message sent successfully!</h4>
+                            <p>Thank you for reaching out. I'll get back to you soon.</p>
+                            <a href="#contact" class="btn btn-outline">Send Another Message</a>
+                        </div>
 
-
-                        <form action="contact.php" method="POST">
-
-                            <!-- NAME AND EMAIL -->
+                        <form>
 
                             <div class="form-row">
-
                                 <div class="form-group">
-
-                                    <label for="name">
-                                        Your Name
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        placeholder="Enter your name"
-                                        autocomplete="name"
-                                        required
-                                    >
-
+                                    <label for="name">Your Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Enter your name" autocomplete="name" required>
                                 </div>
 
-
                                 <div class="form-group">
-
-                                    <label for="email">
-                                        Your Email
-                                    </label>
-
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        placeholder="Enter your email"
-                                        autocomplete="email"
-                                        required
-                                    >
-
+                                    <label for="email">Your Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email" required>
                                 </div>
-
                             </div>
-
-
-                            <!-- MESSAGE -->
 
                             <div class="form-group">
-
-                                <label for="message">
-                                    Your Message
-                                </label>
-
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows="6"
-                                    placeholder="Write your message here..."
-                                    required
-                                ></textarea>
-
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
                             </div>
 
-
-                            <!-- SUBMIT BUTTON -->
-
-                            <button
-                                type="submit"
-                                class="contact-btn"
-                            >
-
+                            <button type="submit" class="contact-btn">
                                 Send Message
-
                                 <i class="fa-solid fa-paper-plane"></i>
-
                             </button>
 
                         </form>
-
                     </div>
 
                 </div>
-
             </div>
-
         </section>
 
     </main>
 
 
-
-    <!-- =================================
-         FOOTER
-    ================================== -->
-
+    <!-- FOOTER -->
     <footer class="footer">
-
         <div class="footer-container">
 
-
-            <!-- FOOTER INFORMATION -->
-
             <div class="footer-info">
-
-                <h3>
-                    James Carl K. Acaso
-                </h3>
-
-                <p>
-                    © 2026 All Rights Reserved.
-                </p>
-
-                <span>
-                    BSIT - ASPIRING WEB DEVELOPER
-                </span>
-
+                <h3>James Carl K. Acaso</h3>
+                <p>© 2026 All Rights Reserved.</p>
+                <span>BSIT - ASPIRING WEB DEVELOPER</span>
             </div>
 
-
-
-            <!-- SOCIAL LINKS -->
-
             <div class="footer-socials">
-
-                <a
-                    href="https://www.facebook.com/jamescarl.acaso.524"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                >
+                <a href="https://www.facebook.com/jamescarl.acaso.524" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                     <i class="fa-brands fa-facebook-f"></i>
                 </a>
 
-
-                <a
-                    href="https://www.instagram.com/xnbcrl?mdxt=cDcwZWpodXptdmV3"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                >
+                <a href="https://www.instagram.com/xnbcrl?mdxt=cDcwZWpodXptdmV3" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
 
-
-                <a
-                    href="https://github.com/Kenzi-ken404"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                >
+                <a href="https://github.com/Kenzi-ken404" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <i class="fa-brands fa-github"></i>
                 </a>
-
             </div>
 
         </div>
-
     </footer>
+
     <script src="script.js"></script>
 
 </body>
